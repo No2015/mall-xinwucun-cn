@@ -25,5 +25,16 @@ export default defineConfig({
       '@store': resolve('./src/store'),
       '@views': resolve('./src/views')
     }
+  },
+  server: {
+    open: false,
+    cors: true,
+    proxy: {
+      "/admin": {
+        target: "http://cqwphp.com",
+        changeOrigin: true, // 是否跨域
+        ws: true,
+      },
+    }
   }
 });

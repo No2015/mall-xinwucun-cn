@@ -37,10 +37,19 @@
   <van-button type="default">default</van-button>
   <van-button type="warning">warning</van-button>
   <van-button type="danger">danger</van-button>
+  <div>
+    <input type="file" ref="file">
+    <van-button type="primary" @click="onSubmit">submit</van-button>
+  </div>
 </template>
 
 <script lang="ts">
-import { ref, defineComponent } from 'vue';
+import { ref, defineComponent, inject } from 'vue';
+import * as qiniu from 'qiniu-js'
+import { getCurrentInstance } from "vue"
+
+// import axios from 'axios'
+
 export default defineComponent({
   name: 'HelloWorld',
   props: {
@@ -51,8 +60,52 @@ export default defineComponent({
   },
   setup: () => {
     const count = ref(0);
-    return { count };
-  }
+    const file = ref(null)
+    const token = ref('')
+    return { count, file, token };
+  },
+  created() {
+    this.init()
+  },
+  methods: {
+    init() {
+      const axios = getCurrentInstance()?.appContext.config.globalProperties.$axios
+      axios.request({
+        url: 'https://www.xinwucun.cn/upload/getToken',
+        method: 'post',
+      }).then((res: any) => {
+        console.log(res)
+        if (res.data && res.data.status) {
+          this.token = res.data.upToken
+        }
+      })
+    },
+    onSubmit() {
+      if (!this.file.files.length) {
+        console.log('请选择文件')
+        return false
+      }
+      const file = this.file.files[0]
+      console.log(file)
+      const observable = qiniu.upload(file, 'test/20221122/1149/' + file.name, this.token)
+      const observer = {
+        next(res: any){
+          console.log(res)
+          // ...
+        },
+        error(err: any){
+          console.log(err)
+          // ...
+        },
+        complete(res: any){
+          console.log(res)
+          // ...
+        }
+      }
+      const subscription = observable.subscribe(observer)
+      
+    },
+  },
 });
 </script>
 
