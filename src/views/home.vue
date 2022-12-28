@@ -1,14 +1,18 @@
 <template>
-  <router-view></router-view>
+  <Layout></Layout>
 </template>
 
-<script lang="ts">
+<script>
 import { defineComponent } from 'vue';
-
+import Layout from '@/components/Layout/index.vue'
 export default defineComponent({
-  name: 'App',
+  name: 'Home',
   components: {
-    // HelloWorld
+    Layout,
   }
 });
 </script>
+
+<style>
+
+</style>
