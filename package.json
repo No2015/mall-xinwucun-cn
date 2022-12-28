@@ -13,9 +13,9 @@
   },
   "homepage": "https://github.com/LZHD/vue-vite-h5#readme",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --mode development",
     "start": "npm run dev",
-    "build": "vue-tsc --noEmit && vite build",
+    "build": "vue-tsc --noEmit && vite build --mode production",
     "serve": "vite preview",
     "lint": "eslint --ext .js,.jsx,.vue,.ts,.tsx src",
     "generate": "plop"

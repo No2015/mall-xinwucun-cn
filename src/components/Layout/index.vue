@@ -1,29 +1,39 @@
 <template>
     <div class="page-box">
-        <div class="page-head">
+        <div class="slot-head">
             <slot name="head"></slot>
         </div>
-        <div class="page-cont">
+        <div class="slot-cont">
             <slot name="cont"></slot>
         </div>
-        <div class="page-foot">
-            <slot name="foot"></slot>
+        <div class="slot-foot">
+            <Foot></Foot>
+        </div>
+        <div class="slot-default">
+            <slot></slot>
         </div>
     </div>
 </template>
 
 <script>
-export default {
-    name: 'Layout'
-}
+import { defineComponent } from 'vue';
+import Foot from './foot.vue'
+
+export default defineComponent({
+    name: 'Layout',
+    components: {
+        Foot,
+    },
+})
 </script>
 
 <style lang="scss" scoped>
 .page-box {
     display: flex;
+    flex-flow: column;
     height: 100%;
     overflow: hidden;
-    .page-cont {
+    .slot-cont {
         flex: 1;
     }
 }

@@ -1,26 +1,17 @@
 <template>
   <Layout>
-    <template v-slot:cont>
-        <div class="home-page"></div>
-    </template>
+    
   </Layout>
 </template>
 
 <script>
 import { defineComponent } from 'vue';
 import Layout from '@/components/Layout/index.vue'
-import { ProductList } from '@/api/index'
-
 export default defineComponent({
-  name: 'Home',
+  name: 'My',
   components: {
     Layout,
-  },
-  setup() {
-    ProductList().then(res => {
-        console.log(res)
-    })
-  },
+  }
 });
 </script>
 

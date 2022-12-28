@@ -1,4 +1,4 @@
-import { defineConfig } from 'vite';
+import { defineConfig, loadEnv } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import Components from 'unplugin-vue-components/vite';
 import { VantResolver } from 'unplugin-vue-components/resolvers';
@@ -10,31 +10,40 @@ function resolve(dir: string) {
 }
 // https://vitejs.dev/config/
 // https://github.com/vitejs/vite/issues/1930 .env
-export default defineConfig({
-  plugins: [
-    vue(),
-    Components({
-      resolvers: [VantResolver()]
-    })
-  ],
-  resolve: {
-    alias: {
-      '@': resolve('./src'),
-      '@common': resolve('./src/common'),
-      '@components': resolve('./src/components'),
-      '@store': resolve('./src/store'),
-      '@views': resolve('./src/views')
-    }
-  },
-  server: {
-    open: false,
-    cors: true,
-    proxy: {
-      "/admin": {
-        target: "http://cqwphp.com",
-        changeOrigin: true, // 是否跨域
-        ws: true,
+export default ({command, mode}) => {
+  const envConfig = loadEnv(mode, './');
+  const env = loadEnv(mode, process.cwd());
+  console.log('env', env);
+  let config = {
+    plugins: [
+      vue(),
+      Components({
+        resolvers: [VantResolver()]
+      })
+    ],
+    resolve: {
+      alias: {
+        '@': resolve('./src'),
+        '@common': resolve('./src/common'),
+        '@components': resolve('./src/components'),
+        '@store': resolve('./src/store'),
+        '@views': resolve('./src/views')
+      }
+    },
+    server: {
+      open: false,
+      cors: true,
+      proxy: {
+        "/admin": {
+          target: "http://cqwphp.com",
+          changeOrigin: true, // 是否跨域
+          ws: true,
+        },
       },
+      define: {
+        'process.env': envConfig
+      }
     }
   }
-});
+  return defineConfig(config)
+}
