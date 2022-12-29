@@ -5,6 +5,7 @@ import store from './store'
 import { Button } from 'vant';
 import dayjs from 'dayjs';
 import 'dayjs/locale/zh-cn';
+import '@/common/assets/css/common.scss'
 import { axiosPlugin } from './plugins/axios';
 
 import './styles/index.scss';

@@ -14,9 +14,10 @@ export class Interceptors {
   instance: AxiosInstance;
   constructor() {
     this.instance = axios.create({
-      baseURL: "/api",
+      baseURL: "",
       timeout: 10000,
     });
+    this.init()
   }
   // 初始化拦截器
   init() {

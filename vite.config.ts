@@ -32,7 +32,7 @@ export default defineConfig(({ mode }) => {
       open: false,
       cors: true,
       proxy: {
-        "/admin": {
+        "/mall": {
           target: "http://cqwphp.com",
           changeOrigin: true, // 是否跨域
           ws: true,

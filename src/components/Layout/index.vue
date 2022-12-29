@@ -35,6 +35,8 @@ export default defineComponent({
     overflow: hidden;
     .slot-cont {
         flex: 1;
+        overflow: auto;
+        position: relative;
     }
 }
 </style>
