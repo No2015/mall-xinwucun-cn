@@ -81,28 +81,28 @@ export default defineComponent({
       })
     },
     onSubmit() {
-      if (!this.file.files.length) {
-        console.log('请选择文件')
-        return false
-      }
-      const file = this.file.files[0]
-      console.log(file)
-      const observable = qiniu.upload(file, 'test/20221122/1149/' + file.name, this.token)
-      const observer = {
-        next(res: any){
-          console.log(res)
-          // ...
-        },
-        error(err: any){
-          console.log(err)
-          // ...
-        },
-        complete(res: any){
-          console.log(res)
-          // ...
-        }
-      }
-      const subscription = observable.subscribe(observer)
+      // if (!this.file.files.length) {
+      //   console.log('请选择文件')
+      //   return false
+      // }
+      // const file = this.file.files[0]
+      // console.log(file)
+      // const observable = qiniu.upload(file, 'test/20221122/1149/' + file.name, this.token)
+      // const observer = {
+      //   next(res: any){
+      //     console.log(res)
+      //     // ...
+      //   },
+      //   error(err: any){
+      //     console.log(err)
+      //     // ...
+      //   },
+      //   complete(res: any){
+      //     console.log(res)
+      //     // ...
+      //   }
+      // }
+      // const subscription = observable.subscribe(observer)
       
     },
   },

@@ -1,5 +1,5 @@
 // 首先引入axios和上一步封装的cookie方法
-import axios, { AxiosInstance } from "axios";
+import axios, { AxiosInstance, AxiosRequestConfig } from "axios";
 import {
   setToken,
   setRefreshToken,
@@ -23,9 +23,9 @@ export class Interceptors {
   init() {
     // 请求接口拦截器
     this.instance.interceptors.request.use(
-      (config) => {
+      (config: AxiosRequestConfig) => {
         // 判断一下是否有cookie 如果有的话则把cookie放入请求头中
-        if (getToken()) {
+        if (getToken() && config.headers) {
           config.headers[getTokenKey()] = getToken();
           config.headers[getRefreshTokenKey()] = getRefreshToken();
         }
