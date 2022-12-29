@@ -10,11 +10,9 @@ function resolve(dir: string) {
 }
 // https://vitejs.dev/config/
 // https://github.com/vitejs/vite/issues/1930 .env
-export default ({command, mode}) => {
-  const envConfig = loadEnv(mode, './');
+export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd());
-  console.log('env', env);
-  let config = {
+  return {
     plugins: [
       vue(),
       Components({
@@ -41,9 +39,8 @@ export default ({command, mode}) => {
         },
       },
       define: {
-        'process.env': envConfig
+        'process.env': env,
       }
     }
   }
-  return defineConfig(config)
-}
+})
