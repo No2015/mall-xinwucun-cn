@@ -9,3 +9,19 @@ export const ProductList = (params:any) => http.request({
         ...params
     }
 })
+
+export const ProducDetail = (params:any) => http.request({
+    url: javaBaseUrl + '/product/getDetail',
+    method: 'post',
+    data: {
+        ...params
+    }
+})
+
+export const CateList = (params:any) => http.request({
+    url: javaBaseUrl + '/cate/getList',
+    method: 'post',
+    data: {
+        ...params
+    }
+})
