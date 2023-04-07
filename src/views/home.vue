@@ -14,7 +14,7 @@
             <div class="product-item pd-4" v-for="(product, key) in productList" :key="key" @click="onProduct(product)">
               <div class="pd-8 product-box">
                 <div class="product-picture">
-                  <img @error="onEmtpy($event)" :src="product.picture" alt="">
+                  <img @error="onEmtpy($event)" :src="getSrc(product.picture)" alt="">
                 </div>
                 <div class="product-info mt-12">
                   <div class="product-title">{{ product.title }}</div>
@@ -82,6 +82,21 @@ export default defineComponent({
           id: product.id
         }
       })
+    },
+    getSrc(imgs) {
+      if (!imgs) return logo
+      let src = ''
+      try {
+        imgs = JSON.parse(imgs)
+        if (imgs.length > 0) {
+          src = imgs[0].url
+        } else {
+          src = logo
+        }
+      } catch (error) {
+        src = logo
+      }
+      return src
     },
   },
 });

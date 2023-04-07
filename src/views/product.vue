@@ -2,9 +2,13 @@
   <Layout>
     <template v-slot:cont>
         <div class="product-page">
-          <div class="product-banner"></div>
+          <div class="product-banner">
+            <Banner></Banner>
+          </div>
           <div class="product-info"></div>
-          <div class="product-info"></div>
+          <div class="product-detail">
+            <div v-html="detail.detail"></div>
+          </div>
         </div>
     </template>
   </Layout>
@@ -13,6 +17,7 @@
 <script>
 import { defineComponent } from 'vue';
 import Layout from '@/components/Layout/index.vue'
+import Banner from '@/components/Banner/index.vue'
 import { ProducDetail } from '@/api/index'
 import logo from '@/common/assets/logo.png'
 
@@ -20,6 +25,7 @@ export default defineComponent({
   name: 'Product',
   components: {
     Layout,
+    Banner,
   },
   data() {
     return {
@@ -45,6 +51,10 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
+.product-page {
+  padding: 0 20px;
+  background: #f6f6f8;
+}
 .product-banner {
 }
 </style>
