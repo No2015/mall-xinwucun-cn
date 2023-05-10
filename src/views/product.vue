@@ -5,7 +5,9 @@
           <div class="product-banner">
             <Banner></Banner>
           </div>
+          <Title>商品规格</Title>
           <div class="product-info"></div>
+          <Title>商品详情</Title>
           <div class="product-detail">
             <div v-html="detail.detail"></div>
           </div>
@@ -20,12 +22,14 @@ import Layout from '@/components/Layout/index.vue'
 import Banner from '@/components/Banner/index.vue'
 import { ProducDetail } from '@/api/index'
 import logo from '@/common/assets/logo.png'
+import Title from '@/components/Title/index.vue'
 
 export default defineComponent({
   name: 'Product',
   components: {
     Layout,
     Banner,
+    Title,
   },
   data() {
     return {
@@ -52,8 +56,12 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .product-page {
-  padding: 0 20px;
   background: #f6f6f8;
+}
+.product-info,
+.product-detail {
+  padding: 0 20px;
+  background: #fff;
 }
 .product-banner {
 }

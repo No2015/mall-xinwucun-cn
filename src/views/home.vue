@@ -1,7 +1,13 @@
 <template>
   <Layout>
+    <template v-slot:head>
+      
+    </template>
     <template v-slot:cont>
         <div class="home-page">
+          <div class="banner-box">
+            <Banner></Banner>
+          </div>
           <div class="cate-list pd-4 mb-8 flex fxsb fww">
             <div class="cate-item pd-4 mg-4" v-for="(cate, key) in cateList" :key="key" @click="onCate(cate)">
               <div class="cate-icon">
@@ -36,10 +42,12 @@ import { defineComponent } from 'vue';
 import Layout from '@/components/Layout/index.vue'
 import { ProductList, CateList } from '@/api/index'
 import logo from '@/common/assets/logo.png'
+import Banner from '@/components/Banner/index.vue'
 
 export default defineComponent({
   name: 'Home',
   components: {
+    Banner,
     Layout,
   },
   data() {
