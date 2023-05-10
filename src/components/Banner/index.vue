@@ -1,31 +1,12 @@
 <template>
-    <swiper
-        :slidesPerView="1"
-        :spaceBetween="30"
-        :loop="true"
-        :centeredSlides="true"
-        :pagination="{
-            clickable: true,
-        }"
-        :autoplay="false"
-        :navigation="true"
-        :modules="modules"
-        class="mySwiper"
-        ref="mySwiper"
-    >
-        <swiper-slide v-for="(item, index) in imgList" @click="onProduct(item)" :key="index">
-        <div class="flex flex-box" :style="{backgroundImage: `url(${item.img})`}"></div>
-        </swiper-slide>
-    </swiper>
+    <van-swipe class="my-swipe" :autoplay="false" indicator-color="white">
+        <van-swipe-item v-for="(item, index) in imgList" @click="onProduct(item)" :key="index">
+            <div class="flex flex-box" :style="{backgroundImage: `url(${item.img})`}"></div>
+        </van-swipe-item>
+    </van-swipe>
 </template>
 <script>
     import { defineComponent } from 'vue';
-    // 这是分页器和对应方法，swiper好像在6的时候就已经分离了分页器和一些其他工具
-    import SwiperCore, { Autoplay, Navigation, Pagination, A11y } from 'swiper';
-    import { Swiper, SwiperSlide } from 'swiper/vue';
-    const modules = [Autoplay, Pagination, Navigation, A11y];
-    import 'swiper/css'
-    import 'swiper/css/navigation'
     export default defineComponent({
         name: 'Banner',
         props: {
@@ -35,11 +16,9 @@
             },
         },
         components: {
-            Swiper, SwiperSlide
         },
         data() {
             return {
-                modules,
             }
         },
         computed: {
@@ -83,8 +62,7 @@
     background-position: center;
 }
 
-.mySwiper {
-    --swiper-navigation-size: 16px;
-    --swiper-navigation-color: #ff5a0c;
-}
+.my-swipe{
+    --van-swipe-indicator-inactive-background-color: #39a9ed;
+  }
 </style>
