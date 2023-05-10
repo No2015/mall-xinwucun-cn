@@ -5,11 +5,25 @@
           <div class="product-banner">
             <Banner></Banner>
           </div>
-          <Title>商品规格</Title>
+          <div class="product-title">{{ detail.title }}</div>
           <div class="product-info">
+            <van-row class="info-row">
+              <van-col span="12">
+                <span class="red">¥{{detail.price}}</span>
+              </van-col>
+            </van-row>
+            <van-row class="info-row">
+              <van-col span="12">
+                <span class="label">库存</span>
+                <span class="balck">{{detail.quantity}}</span>
+              </van-col>
+              <van-col span="12">
+                <span class="label">销量</span>
+                <span class="balck">{{detail.sales}}</span>
+              </van-col>
+            </van-row>
             <van-cell-group>
-              <van-cell title="单元格" value="内容" />
-              <van-cell title="单元格" value="内容" label="描述信息" />
+              <van-cell title="规格" :value="detail.specification" />
             </van-cell-group>
           </div>
           <Title>商品详情</Title>
@@ -62,6 +76,27 @@ export default defineComponent({
 <style lang="scss" scoped>
 .product-page {
   background: #f6f6f8;
+}
+.product-title {
+  font-style: italic;
+  padding: 10px;
+  font-size: 16px;
+  background: #fff;
+}
+.info-row {
+  background: #fff;
+  font-size: 14px;
+  padding: 0 10px 10px;
+  .label {
+    padding-right: 4px;
+  }
+  .red {
+    color: #ff5a0c;
+    font-weight: 600;
+  }
+  .black {
+    color: #000;
+  }
 }
 .product-detail {
   padding: 0 20px;
