@@ -1,7 +1,7 @@
 <template>
   <Layout>
     <template v-slot:head>
-      
+      <van-search v-model="value" placeholder="请输入搜索关键词" />
     </template>
     <template v-slot:cont>
         <div class="home-page">
@@ -54,6 +54,7 @@ export default defineComponent({
     return {
       cateList: [],
       productList: [],
+      value: '',
     }
   },
   created() {

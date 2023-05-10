@@ -6,7 +6,12 @@
             <Banner></Banner>
           </div>
           <Title>商品规格</Title>
-          <div class="product-info"></div>
+          <div class="product-info">
+            <van-cell-group>
+              <van-cell title="单元格" value="内容" />
+              <van-cell title="单元格" value="内容" label="描述信息" />
+            </van-cell-group>
+          </div>
           <Title>商品详情</Title>
           <div class="product-detail">
             <div v-html="detail.detail"></div>
@@ -58,7 +63,6 @@ export default defineComponent({
 .product-page {
   background: #f6f6f8;
 }
-.product-info,
 .product-detail {
   padding: 0 20px;
   background: #fff;
