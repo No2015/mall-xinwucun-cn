@@ -1,7 +1,7 @@
 <template>
     <van-swipe class="my-swipe" :autoplay="false" indicator-color="white">
         <van-swipe-item v-for="(item, index) in imgList" @click="onProduct(item)" :key="index">
-            <div class="flex flex-box" :style="{backgroundImage: `url(${item.img})`}"></div>
+            <div class="item" :style="{backgroundImage: `url(${item.img})`}"></div>
         </van-swipe-item>
     </van-swipe>
 </template>
@@ -54,7 +54,7 @@
 </script>
 
 <style lang="scss" scoped>
-.flex-box {
+.item {
     width: 100%;
     background-size: cover;
     height: 0;

@@ -1,5 +1,7 @@
 <template>
   <Layout>
+    <template v-slot:head>
+    </template>
     <template v-slot:cont>
         <div class="product-page">
           <div class="product-banner">
